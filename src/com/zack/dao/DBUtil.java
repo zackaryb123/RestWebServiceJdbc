@@ -1,0 +1,24 @@
+package com.zack.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class DBUtil {
+	
+	public static final String driver = "oracle.jdbc.driver.OracleDriver";
+	public static final String URL = "jdbc:oracle:thin:@localhost:1521:XE";
+	public static final String userID = "hr";
+	public static final String pass = "hr";
+
+	public static Connection getConnection(){
+		Connection c1= null;
+		try {
+			Class.forName(driver);
+			c1 = DriverManager.getConnection(URL, userID, pass);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return c1;
+	}	
+}
